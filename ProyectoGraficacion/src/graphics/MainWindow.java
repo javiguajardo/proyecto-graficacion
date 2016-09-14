@@ -17,6 +17,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         setSize(900, 600);
         setVisible(true);
+        setTitle("Proyecto 1 - Graficación");
         panel = new ContainerPanel(65, 75);
         add(panel);
         

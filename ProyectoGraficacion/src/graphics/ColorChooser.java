@@ -27,21 +27,20 @@ public class ColorChooser extends JPanel {
         // boton y eventHandler
         changeColorJButton = new JButton("Cambiar Color");
         changeColorJButton.addActionListener(
-                new ActionListener() {
-            // mostrar colorchooser al hacer click
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        
+            new ActionListener() {
+                // mostrar colorchooser al hacer click
+                @Override
+                public void actionPerformed(ActionEvent e) {
 
-                color = JColorChooser.showDialog(
-                        ColorChooser.this,
-                        "Elige un color",
-                        color);
+                    color = JColorChooser.showDialog(ColorChooser.this, 
+                            "Elige un color", color);
 
-                if (color == null) {
-                    color = Color.LIGHT_GRAY;
-                }
-            }// end of actionPerformed
-        }// end of ActionListener
+                    if (color == null) {
+                        color = Color.LIGHT_GRAY;
+                    }
+                }// end of actionPerformed
+            }// end of ActionListener
         );// end of addAction
 
         add(changeColorJButton, BorderLayout.SOUTH);

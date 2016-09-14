@@ -52,9 +52,7 @@ public class Client extends JComponent {
         g.drawOval(0, getHeight() / 2, CIRCLE_D, CIRCLE_D);
 
         // dibujado de texto
-        Font bold = new Font(getFont().getName(),
-                Font.BOLD,
-                getFont().getSize());
+        Font bold = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
         g.setFont(bold);
         g.drawString("(" + this.xOnMap + ", " + this.yOnMap + ")", CIRCLE_D, CIRCLE_D);
 
