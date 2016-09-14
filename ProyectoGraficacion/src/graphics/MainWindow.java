@@ -15,17 +15,22 @@ import java.util.List;
 public class MainWindow extends javax.swing.JFrame {
 
     private ContainerPanel panel;
-    
+    private ColorChooser chooser;
+
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        
+
         setSize(900, 600);
         setVisible(true);
         panel = new ContainerPanel(65, 75);
         add(panel);
+        
+        chooser = new ColorChooser();
+        add(chooser);
+        chooser.setLocation(0, panel.getHeight());
     }
 
     /**
