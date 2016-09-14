@@ -23,7 +23,7 @@ public class VRP_Panel extends JComponent {
     private int proportionX;
     private int proportionY;
 
-    private int lineSeparation = 5;
+    private int lineSeparation = 10;
 
     List<Client> clientList = new ArrayList<>();
 
@@ -38,19 +38,8 @@ public class VRP_Panel extends JComponent {
         proportionX = getWidth() / xLimit;
         proportionY = getWidth() / yLimit;
 
-        // agregar clientes
-        Client client1 = new Client(50, 50, 10, 1);
-        add(client1);
-
-        Client client2 = new Client(40, 10, 5, 2);
-        add(client2);
-
-        Client client3 = new Client(15, 40, 8, 3);
-        add(client3);
-
-        clientList.add(client1);
-        clientList.add(client2);
-        clientList.add(client3);
+        // agregar clientes dibujarPuntos(cantidad de puntos, distancia entre puntos)
+        dibujarPuntos(6, 12);
     }// end of Constructor
 
     public void paintComponent(Graphics g) {
@@ -98,17 +87,14 @@ public class VRP_Panel extends JComponent {
             if (i < (clientList.size() - 1)) {
                 distancia += dibujarLineaEntreClientes(i, i + 1, g);
 
-            } else {
-                distancia += dibujarLineaEntreClientes(i, 0, g);
             }
         }// end of for
     }// end of dibujarLineasEntrePuntos
 
     public double dibujarLineaEntreClientes(int cliente1, int cliente2, Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        Stroke punteada = new BasicStroke(2, BasicStroke.CAP_BUTT,
-                BasicStroke.JOIN_BEVEL, 0, new float[]{30, 7, 18}, 0);
-        g2D.setStroke(punteada);
+        Stroke linea = new BasicStroke(2);
+        g2D.setStroke(linea);
         g2D.setColor(Color.BLUE);
 
         // coordenadas del cliente 1
@@ -155,6 +141,14 @@ public class VRP_Panel extends JComponent {
 
     public int getProportionY() {
         return proportionY;
+    }
+    
+    public void dibujarPuntos(int puntos, int distancia) {
+        for(int i = 0; i < puntos; i++){
+            Client c = new Client(i + (i * distancia));
+            add(c);
+            clientList.add(c);
+        }
     }
     
 }// end of class
