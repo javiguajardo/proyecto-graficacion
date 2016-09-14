@@ -23,7 +23,7 @@ public class VRP_Panel extends JComponent {
     private int proportionX;
     private int proportionY;
 
-    private int lineSeparation = 5;
+    private int lineSeparation = 10;
 
     List<Client> clientList = new ArrayList<>();
 
@@ -39,18 +39,31 @@ public class VRP_Panel extends JComponent {
         proportionY = getWidth() / yLimit;
 
         // agregar clientes
-        Client client1 = new Client(50, 50, 10, 1);
-        add(client1);
+        
 
-        Client client2 = new Client(40, 10, 5, 2);
-        add(client2);
+//        Client client2 = new Client(8);
+//        add(client2);
+//
+//        Client client3 = new Client(16);
+//        add(client3);
+//        
+//        Client client4 = new Client(24);
+//        add(client4);
+//        
+//        Client client5 = new Client(32);
+//        add(client5);
+        
+        for(int i = 0; i < 20; i++){
+            Client c = new Client(i + (i*3));
+            add(c);
+            clientList.add(c);
+        }
 
-        Client client3 = new Client(15, 40, 8, 3);
-        add(client3);
-
-        clientList.add(client1);
-        clientList.add(client2);
-        clientList.add(client3);
+        
+//        clientList.add(client2);
+//        clientList.add(client3);
+//        clientList.add(client4);
+//        clientList.add(client5);
     }// end of Constructor
 
     public void paintComponent(Graphics g) {
@@ -98,17 +111,14 @@ public class VRP_Panel extends JComponent {
             if (i < (clientList.size() - 1)) {
                 distancia += dibujarLineaEntreClientes(i, i + 1, g);
 
-            } else {
-                distancia += dibujarLineaEntreClientes(i, 0, g);
             }
         }// end of for
     }// end of dibujarLineasEntrePuntos
 
     public double dibujarLineaEntreClientes(int cliente1, int cliente2, Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        Stroke punteada = new BasicStroke(2, BasicStroke.CAP_BUTT,
-                BasicStroke.JOIN_BEVEL, 0, new float[]{30, 7, 18}, 0);
-        g2D.setStroke(punteada);
+        Stroke linea = new BasicStroke(2);
+        g2D.setStroke(linea);
         g2D.setColor(Color.BLUE);
 
         // coordenadas del cliente 1

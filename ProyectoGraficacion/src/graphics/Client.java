@@ -9,6 +9,7 @@ import java.awt.Stroke;
 import javax.swing.JComponent;
 
 /**
+ * 
  *
  * @author El Javi y Alex
  */
@@ -16,19 +17,15 @@ public class Client extends JComponent {
 
     private int xOnMap;
     private int yOnMap;
-    private int demand;
-    private int clientID;
     private int Width = 70;
     private int Height = 20;
 
     public static int CIRCLE_D;
     public static int CIRCLE_R;
 
-    public Client(int xOnMap, int yOnMap, int demand, int clientId) {
+    public Client(int xOnMap) {
         this.xOnMap = xOnMap;
-        this.yOnMap = yOnMap;
-        this.demand = demand;
-        this.clientID = clientId;
+        this.yOnMap = mathFunction(xOnMap);
 
         setSize(Width, Height);
 
@@ -59,7 +56,7 @@ public class Client extends JComponent {
                 Font.BOLD,
                 getFont().getSize());
         g.setFont(bold);
-        g.drawString(this.clientID + " (" + this.demand + ")", CIRCLE_D, CIRCLE_D);
+        g.drawString("(" + this.xOnMap + ", " + this.yOnMap + ")", CIRCLE_D, CIRCLE_D);
 
         VRP_Panel parent = (VRP_Panel) getParent();
         int xProp = parent.getProportionX();
@@ -89,6 +86,13 @@ public class Client extends JComponent {
 
     public int getyOnMap() {
         return yOnMap;
+    }
+
+    public int mathFunction(int x) {
+        int y;
+        y = (2 * (x / 3));
+
+        return y;
     }
 
 }
