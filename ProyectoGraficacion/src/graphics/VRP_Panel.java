@@ -38,32 +38,8 @@ public class VRP_Panel extends JComponent {
         proportionX = getWidth() / xLimit;
         proportionY = getWidth() / yLimit;
 
-        // agregar clientes
-        
-
-//        Client client2 = new Client(8);
-//        add(client2);
-//
-//        Client client3 = new Client(16);
-//        add(client3);
-//        
-//        Client client4 = new Client(24);
-//        add(client4);
-//        
-//        Client client5 = new Client(32);
-//        add(client5);
-        
-        for(int i = 0; i < 20; i++){
-            Client c = new Client(i + (i*3));
-            add(c);
-            clientList.add(c);
-        }
-
-        
-//        clientList.add(client2);
-//        clientList.add(client3);
-//        clientList.add(client4);
-//        clientList.add(client5);
+        // agregar clientes dibujarPuntos(cantidad de puntos, distancia entre puntos)
+        dibujarPuntos(6, 12);
     }// end of Constructor
 
     public void paintComponent(Graphics g) {
@@ -165,6 +141,14 @@ public class VRP_Panel extends JComponent {
 
     public int getProportionY() {
         return proportionY;
+    }
+    
+    public void dibujarPuntos(int puntos, int distancia) {
+        for(int i = 0; i < puntos; i++){
+            Client c = new Client(i + (i * distancia));
+            add(c);
+            clientList.add(c);
+        }
     }
     
 }// end of class
