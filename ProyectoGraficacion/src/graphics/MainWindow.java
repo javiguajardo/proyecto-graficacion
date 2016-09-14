@@ -7,6 +7,7 @@ package graphics;
 public class MainWindow extends javax.swing.JFrame {
 
     private ContainerPanel panel;
+    private ColorChooser chooser;
 
     /**
      * Creates new form MainWindow
@@ -18,6 +19,10 @@ public class MainWindow extends javax.swing.JFrame {
         setVisible(true);
         panel = new ContainerPanel(65, 75);
         add(panel);
+        
+        chooser = new ColorChooser();
+        add(chooser);
+        chooser.setLocation(0, panel.getHeight());
     }
 
     /**
