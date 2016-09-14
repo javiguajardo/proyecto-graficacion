@@ -1,27 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package graphics;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
- * @author Jairo
+ * @author El Javi y Alex
  */
 public class MainWindow extends javax.swing.JFrame {
 
     private ContainerPanel panel;
-    
+
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        
+
         setSize(900, 600);
         setVisible(true);
         panel = new ContainerPanel(65, 75);
