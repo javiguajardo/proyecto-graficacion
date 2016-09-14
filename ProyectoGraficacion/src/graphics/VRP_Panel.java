@@ -39,7 +39,7 @@ public class VRP_Panel extends JComponent {
         proportionY = getWidth() / yLimit;
 
         // agregar clientes dibujarPuntos(cantidad de puntos, distancia entre puntos)
-        dibujarPuntos(6, 12);
+        dibujarPuntos(12, 10);
     }// end of Constructor
 
     public void paintComponent(Graphics g) {
@@ -86,7 +86,6 @@ public class VRP_Panel extends JComponent {
             // dibujar linea entre clientes
             if (i < (clientList.size() - 1)) {
                 distancia += dibujarLineaEntreClientes(i, i + 1, g);
-
             }
         }// end of for
     }// end of dibujarLineasEntrePuntos
@@ -94,8 +93,17 @@ public class VRP_Panel extends JComponent {
     public double dibujarLineaEntreClientes(int cliente1, int cliente2, Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
         Stroke linea = new BasicStroke(2);
-        g2D.setStroke(linea);
+        Stroke punteada = new BasicStroke(2, BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_BEVEL, 0, new float[]{5, 3}, 0);
         g2D.setColor(Color.BLUE);
+        
+        // cambia el tipo de linea a dibujar
+        if( (cliente2 & 1) == 0 ){
+            g2D.setColor(new Color(2, 171, 127));
+            g2D.setStroke(punteada);
+        } else {
+            g2D.setStroke(linea);
+        }
 
         // coordenadas del cliente 1
         int xClient1 = clientList.get(cliente1).getX() + Client.CIRCLE_R;
@@ -108,20 +116,16 @@ public class VRP_Panel extends JComponent {
         g.drawLine(xClient1, yClient1, xClient2, yClient2);
 
         // dibujar la distancia entre puntos
-        Font bold = new Font(getFont().getName(),
-                Font.BOLD,
-                getFont().getSize());
+        Font bold = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
         g.setFont(bold);
         g.setColor(Color.BLACK);
 
         // calcular la distancia
         double distancia = calcularDistancia(clientList.get(cliente1),
                 clientList.get(cliente2));
-        String distanciaS = String.format("%.2f",
-                distancia);
+        String distanciaS = String.format("%.2f", distancia);
 
-        g.drawString(distanciaS, (xClient1 + xClient2) / 2,
-                (yClient1 + yClient2) / 2);
+        g.drawString(distanciaS, (xClient1 + xClient2) / 2, (yClient1 + yClient2) / 2);
 
         return distancia;
     }
@@ -145,10 +149,10 @@ public class VRP_Panel extends JComponent {
     
     public void dibujarPuntos(int puntos, int distancia) {
         for(int i = 0; i < puntos; i++){
-            Client c = new Client(i + (i * distancia));
-            add(c);
-            clientList.add(c);
+            Client client = new Client(i + (i * distancia));
+            add(client);
+            clientList.add(client);
         }
     }
-    
+
 }// end of class

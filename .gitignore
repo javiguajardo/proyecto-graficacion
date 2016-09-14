@@ -1,1 +1,6 @@
-/ProyectoGraficacion/build/
+ProyectoGraficacion/build/
+ProyectoGraficacion/dist/
+ProyectoGraficacion/nbproject/private/
+ProyectoGraficacion/nbbuild/
+ProyectoGraficacion/nbdist/
+.nb-gradle/
