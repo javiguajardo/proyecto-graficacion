@@ -23,8 +23,7 @@ public class ContainerPanel extends JComponent {
         int innerPanelWidth = getWidth() - margen;
         int innerPanelHeight = getHeight() - margen;
 
-        vrpPanel = new VRP_Panel(innerPanelWidth, innerPanelHeight,
-                xLimit, yLimit);
+        vrpPanel = new VRP_Panel(innerPanelWidth, innerPanelHeight, xLimit, yLimit);
         add(vrpPanel);
     }// end of constructor
 

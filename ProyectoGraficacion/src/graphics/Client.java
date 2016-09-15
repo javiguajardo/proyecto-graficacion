@@ -52,8 +52,8 @@ public class Client extends JComponent {
         g.drawOval(0, getHeight() / 2, CIRCLE_D, CIRCLE_D);
 
         // dibujado de texto
-        Font bold = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
-        g.setFont(bold);
+        Font coordenadas = new Font("Raleway SemiBold", Font.PLAIN, 13);
+        g.setFont(coordenadas);
         g.drawString("(" + this.xOnMap + ", " + this.yOnMap + ")", CIRCLE_D, CIRCLE_D);
 
         VRP_Panel parent = (VRP_Panel) getParent();
@@ -92,5 +92,5 @@ public class Client extends JComponent {
 
         return y;
     }
-
+    
 }
